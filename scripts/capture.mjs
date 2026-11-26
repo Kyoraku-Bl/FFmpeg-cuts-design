@@ -37,9 +37,15 @@ async function dismissOverlays() {
       await page.waitForTimeout(350);
       continue;
     }
-    const consent = page.getByText(/accept all|got it|dismiss/i);
+    const consent = page.getByText(/^Essential only$/i);
     if (await consent.count()) {
       await consent.first().click({ timeout: 2500 }).catch(() => {});
+      await page.waitForTimeout(400);
+      continue;
+    }
+    const consent2 = page.getByText(/accept all|got it|accept analytics/i);
+    if (await consent2.count()) {
+      await consent2.first().click({ timeout: 2500 }).catch(() => {});
       await page.waitForTimeout(350);
       continue;
     }
@@ -113,9 +119,20 @@ try {
   for (const [name, path] of pages) await visit(name, path);
 
   // ---------------- real transaction interaction ----------------
-  await page.goto(`${BASE}/dashboard?new=1`, { waitUntil: 'domcontentloaded' }).catch(() => {});
+  await page.goto(`${BASE}/dashboard`, { waitUntil: 'domcontentloaded' }).catch(() => {});
   await page.waitForTimeout(1500);
   await dismissOverlays();
+
+  // open the REAL "New transaction" modal (button, then N shortcut fallback)
+  const newBtn = page.locator('button:has-text("New transaction")').first();
+  if (await newBtn.count()) {
+    await newBtn.click({ timeout: 6000 }).catch((e) => note('new-btn-error', e.message));
+  } else {
+    await page.keyboard.press('n').catch(() => {});
+  }
+  await page.waitForTimeout(1200);
+  await dismissOverlays();
+  note('modal-open-url', page.url());
   await shot('14_modal_open');
 
   const inputs = await page.locator('input:not([type="hidden"])').all();
@@ -124,7 +141,7 @@ try {
   const amount = page.locator('input[placeholder="0.00"], input[inputmode="decimal"]').first();
   if (await desc.count()) { await desc.fill('Shopify payout — 7 days').catch(() => {}); note('fill', 'description ok'); }
   if (await amount.count()) { await amount.fill('4200').catch(() => {}); note('fill', 'amount ok'); }
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(600);
   await shot('15_modal_filled');
 
   // try to actually save, then capture the updated UI
