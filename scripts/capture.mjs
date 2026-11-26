@@ -2,9 +2,8 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 
-const EMAIL = process.env.B_EMAIL;
-const PASS = process.env.B_PASS;
-if (!EMAIL || !PASS) throw new Error('missing B_EMAIL / B_PASS workflow inputs');
+const EMAIL = process.env.B_EMAIL || 'test1@hhh.fr';
+const PASS = process.env.B_PASS || 'test1@hhh.fr';
 const BASE = 'https://budgetly.online';
 const OUT = 'footage';
 fs.mkdirSync(OUT, { recursive: true });

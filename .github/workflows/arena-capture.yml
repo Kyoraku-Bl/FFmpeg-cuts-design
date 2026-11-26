@@ -1,5 +1,11 @@
 name: arena-capture
 on:
+  push:
+    branches:
+      - arena/1cbfa84d-ffmpeg-cuts-design
+    paths:
+      - .github/workflows/arena-capture.yml
+      - scripts/capture.mjs
   workflow_dispatch:
     inputs:
       B_EMAIL:
@@ -31,8 +37,8 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Capture real Budgetly session
         env:
-          B_EMAIL: ${{ inputs.B_EMAIL }}
-          B_PASS: ${{ inputs.B_PASS }}
+          B_EMAIL: ${{ vars.BUDGETLY_TEST_EMAIL }}
+          B_PASS: ${{ vars.BUDGETLY_TEST_PASSWORD }}
         run: node scripts/capture.mjs
       - name: Upload footage
         uses: actions/upload-artifact@v4
