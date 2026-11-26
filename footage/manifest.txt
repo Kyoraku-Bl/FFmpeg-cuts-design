@@ -3,14 +3,14 @@ shot: 01_login_filled
 login: typed supplied test account
 after-login-url: https://budgetly.online/dashboard
 after-login-title: Budgetly — the #1 Cashflow & Profit Tracker for Multi-Hustle Entrepreneurs
-after-login-body: Skip to main content | Budgetly | Money tracker | My business | Current business | New transaction | N | MENU | Dashboard | All businesses | Businesses | 4/10 | Monthly budget | Transactions | Goals | Payment accounts | Compare | Reports | Settings | Team | Backups | MONTHS | 2026 | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | Data auto-saved | Last snapshot 39 min ago | Set up your PC copy | TE | test | test1@hhh.fr | Dashboard | Portfolio | · lifetime | EN | FR | TE 
+after-login-body: Skip to main content | Budgetly | Money tracker | My business | Current business | New transaction | N | MENU | Dashboard | All businesses | Businesses | 4/10 | Monthly budget | Transactions | Goals | Payment accounts | Compare | Reports | Settings | Team | Backups | MONTHS | 2026 | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | Data auto-saved | Last snapshot 43 min ago | Set up your PC copy | TE | test | test1@hhh.fr | Dashboard | Portfolio | · lifetime | EN | FR | TE 
 shot: 02_after_login
 logged-in: true
 visit: 03_dashboard /dashboard -> https://budgetly.online/dashboard (200)
 shot: 03_dashboard
 visit: 04_overview /overview -> https://budgetly.online/overview (200)
 shot: 04_overview
-visit: 05_transactions /transactions -> https://budgetly.online/transactions (200)
+visit: 05_transactions /transactions -> https://budgetly.online/transactions?kind=expense&category= (200)
 shot: 05_transactions
 visit: 06_new_transaction /dashboard?new=1 -> https://budgetly.online/dashboard (200)
 shot: 06_new_transaction
@@ -41,16 +41,21 @@ modal-inputs: 4
 fill: note ok
 fill: amount ok
 select-count: 0
-account-options: Ads & marketing44%$1.4K | Payment fees27%$850.00 | Other expense8%$260.00 | Shipping & fulfilment7%$210.00 | Inventory6%$180.00 | Software & tools4%$134.00 | Internet & phone4%$120.00 | Client C · retainedE-commerce·26 Nov+$1,250.00 | E-commerceE-commerce·25 Nov+$900.00 | Internet & phoneInternet & 
+account-options: Payment fees69%$5.1K | Ads & marketing19%$1.4K | Other expense4%$260.00 | Shipping & fulfilment3%$210.00 | Inventory2%$180.00 | Software & tools2%$134.00 | Internet & phone2%$120.00 | Shopify payout — 7 daysPayment fees·26 Nov−$4,200.00 | Client C · retainedE-commerce·26 Nov+$1,250.00 | E-commerceE-
 account-selected: custom option Wise
 account-selected-final: true
 shot: 15_modal_filled
 modal-buttons: Expenses |  Expense | Cancel | Add expense
 after-save-url: https://budgetly.online/dashboard
 modal-after-save: 0
-after-save-body: Skip to main content | Budgetly | Money tracker | My business | Current business | New transaction | N | MENU | Dashboard | All businesses | Businesses | 4/10 | Monthly budget | Transactions | Goals | Payment accounts | Compare | Reports | Settings | Team | Backups | MONTHS | 2026 | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | Data auto-saved | Last snapshot 40 min ago | Set up your PC copy | TE | test | test1@hhh.fr | Dashboard | Portfolio | · lifetime | EN | FR | TE | test | Portfolio · Lifetime | MY BUSINESS | 2026 at a glance | Where your money comes from — and where it goes. | 2026 | Open November | Current balance | $35,661.00 | As of November 2026 | 27 txns | Go to this month | Income 2026 | $38,785.00 | Plan $0.00 | Expenses 2026 | $3,124.00 | Plan $0.00 | Net savings | +$35,661.00 | Savings rate 91.9% | Cash flow | Income vs expenses per month · 2026 |
+after-save-body: Skip to main content | Budgetly | Money tracker | My business | Current business | New transaction | N | MENU | Dashboard | All businesses | Businesses | 4/10 | Monthly budget | Transactions | Goals | Payment accounts | Compare | Reports | Settings | Team | Backups | MONTHS | 2026 | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | Data auto-saved | Last snapshot 45 min ago | Set up your PC copy | TE | test | test1@hhh.fr | Dashboard | Portfolio | · lifetime | EN | FR | TE | test | Portfolio · Lifetime | MY BUSINESS | 2026 at a glance | Where your money comes from — and where it goes. | 2026 | Open November | Current balance | $27,261.00 | As of November 2026 | 29 txns | Go to this month | Income 2026 | $38,785.00 | Plan $0.00 | Expenses 2026 | $11,524.00 | Plan $0.00 | Net savings | +$27,261.00 | Savings rate 70.3% | Cash flow | Income vs expenses per month · 2026 
 shot: 18_after_save
 visit: 19_transactions_after /transactions -> https://budgetly.online/transactions (200)
 shot: 19_transactions_after
+visit: 22_dashboard_after_reload /dashboard -> https://budgetly.online/dashboard (200)
+shot: 22_dashboard_after_reload
+after-reload-body: Skip to main content | Budgetly | Money tracker | My business | Current business | New transaction | N | MENU | Dashboard | All businesses | Businesses | 4/10 | Monthly budget | Transactions | Goals | Payment accounts | Compare | Reports | Settings | Team | Backups | MONTHS | 2026 | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | Data auto-saved | Last snapshot 45 min ago | Set up your PC copy | TE | test | test1@hhh.fr | Dashboard | Portfolio | · lifetime | EN | FR | TE | test | Portfolio · Lifetime | MY BUSINESS | 2026 at a glance | Where your money comes from — and where it goes. | 2026 | Open November | Current balance | $27,261.00 | As of November 2026 | 29 txns | Go to this month | Income 2026 | $38,785.00 | Plan $0.00 | Expenses 2026 | $11,524.00 | Plan $0.00 | Net savings | +$27,261.00 | Savings rate 70.3% | Cash flow | Income vs expenses per month · 2026 
+visit: 23_accounts_after /accounts -> https://budgetly.online/accounts (200)
+shot: 23_accounts_after
 shot: 21_transactions_clean
 done: capture finished
