@@ -54,9 +54,9 @@ async function dismissOverlays() {
   await page.keyboard.press('Escape').catch(() => {});
 }
 
-async function shot(name) {
+async function shot(name, dismiss = true) {
   try {
-    await dismissOverlays();
+    if (dismiss) await dismissOverlays();
     await page.waitForTimeout(700);
     await page.screenshot({ path: `${OUT}/${name}.png`, animations: 'disabled' });
     note('shot', name);
@@ -131,9 +131,8 @@ try {
     await page.keyboard.press('n').catch(() => {});
   }
   await page.waitForTimeout(1200);
-  await dismissOverlays();
   note('modal-open-url', page.url());
-  await shot('14_modal_open');
+  await shot('14_modal_open', false);  // NO Escape: keep the real modal open
 
   const inputs = await page.locator('input:not([type="hidden"])').all();
   note('modal-inputs', String(inputs.length));
@@ -142,15 +141,14 @@ try {
   if (await desc.count()) { await desc.fill('Shopify payout — 7 days').catch(() => {}); note('fill', 'description ok'); }
   if (await amount.count()) { await amount.fill('4200').catch(() => {}); note('fill', 'amount ok'); }
   await page.waitForTimeout(600);
-  await shot('15_modal_filled');
+  await shot('15_modal_filled', false);
 
   // try to actually save, then capture the updated UI
   const save = page.locator('button:has-text("Save transaction"), button:has-text("Add transaction"), button:has-text("Save")').first();
   if (await save.count()) {
     await save.click({ timeout: 5000 }).catch((e) => note('save-error', e.message));
     await page.waitForTimeout(1600);
-    await dismissOverlays();
-    await shot('18_after_save');
+    await shot('18_after_save', false);
     await visit('19_transactions_after', '/transactions');
   }
 
