@@ -3,7 +3,7 @@ shot: 01_login_filled
 login: typed test1@hhh.fr
 after-login-url: https://budgetly.online/dashboard
 after-login-title: Budgetly — the #1 Cashflow & Profit Tracker for Multi-Hustle Entrepreneurs
-after-login-body: Skip to main content | Budgetly | Money tracker | My business | Current business | New transaction | N | MENU | Dashboard | All businesses | Businesses | 4/10 | Monthly budget | Transactions | Goals | Payment accounts | Compare | Reports | Settings | Team | Backups | MONTHS | 2026 | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | Data auto-saved | Last snapshot 3 min ago | Set up your PC copy | TE | test | test1@hhh.fr | Dashboard | Portfolio | · lifetime | EN | FR | TE | test | Portfolio · Lifetime | MY BUSINESS | 2026 at a glance | Where your money comes from — and where it goes. | 2026 | Open November | Current balance | $35,661.00 | As of November 2026 | 27 txns | Go t
+after-login-body: Skip to main content | Budgetly | Money tracker | My business | Current business | New transaction | N | MENU | Dashboard | All businesses | Businesses | 4/10 | Monthly budget | Transactions | Goals | Payment accounts | Compare | Reports | Settings | Team | Backups | MONTHS | 2026 | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | Data auto-saved | Last snapshot 8 min ago | Set up your PC copy | TE | test | test1@hhh.fr | Dashboard | Portfolio | · lifetime | EN | FR | TE | test | Portfolio · Lifetime | MY BUSINESS | 2026 at a glance | Where your money comes from 
 shot: 02_after_login
 logged-in: true
 visit: 03_dashboard /dashboard -> https://budgetly.online/dashboard (200)
@@ -14,7 +14,7 @@ visit: 05_transactions /transactions -> https://budgetly.online/transactions (20
 shot: 05_transactions
 visit: 06_new_transaction /dashboard?new=1 -> https://budgetly.online/dashboard (200)
 shot: 06_new_transaction
-visit: 07_month /month -> https://budgetly.online/month (200)
+visit: 07_month /month -> https://budgetly.online/month/2026/11 (200)
 shot: 07_month
 visit: 08_accounts /accounts -> https://budgetly.online/accounts (200)
 shot: 08_accounts
@@ -28,18 +28,15 @@ visit: 12_businesses /businesses -> https://budgetly.online/businesses (200)
 shot: 12_businesses
 visit: 13_settings /settings -> https://budgetly.online/settings (200)
 shot: 13_settings
-shot: 14_modal_open
-modal-inputs: 5
-input-0: hidden name=$ACTION_ID_4004e29b0d563a7360727032b57a5297dcdf8450c7 placeholder=null
-input-1: text name=null placeholder=0.00
-input-2: date name=null placeholder=null
-input-3: text name=null placeholder=Visa…
-input-4: text name=null placeholder=e.g. Spotify, groceries, taxi…
-fill: description ok
-fill: amount ok
-shot: 15_modal_filled
 visit: 16_demo /demo -> https://budgetly.online/demo (200)
 shot: 16_demo
 visit: 17_pricing /pricing -> https://budgetly.online/pricing (200)
 shot: 17_pricing
+shot: 14_modal_open
+modal-inputs: 0
+shot: 15_modal_filled
+visit: 20_dashboard_clean /dashboard -> https://budgetly.online/dashboard (200)
+shot: 20_dashboard_clean
+visit: 21_transactions_clean /transactions -> https://budgetly.online/transactions (200)
+shot: 21_transactions_clean
 done: capture finished
