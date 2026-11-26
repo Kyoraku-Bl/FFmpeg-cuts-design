@@ -3,7 +3,7 @@ shot: 01_login_filled
 login: typed test1@hhh.fr
 after-login-url: https://budgetly.online/dashboard
 after-login-title: Budgetly — the #1 Cashflow & Profit Tracker for Multi-Hustle Entrepreneurs
-after-login-body: Skip to main content | Budgetly | Money tracker | My business | Current business | New transaction | N | MENU | Dashboard | All businesses | Businesses | 4/10 | Monthly budget | Transactions | Goals | Payment accounts | Compare | Reports | Settings | Team | Backups | MONTHS | 2026 | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | Data auto-saved | Last snapshot 13 min ago | Set up your PC copy | TE | test | test1@hhh.fr | Dashboard | Portfolio | · lifetime | EN | FR | TE | test | Portfolio · Lifetime | MY BUSINESS | 2026 at a glance | Where your money comes from
+after-login-body: Skip to main content | Budgetly | Money tracker | My business | Current business | New transaction | N | MENU | Dashboard | All businesses | Businesses | 4/10 | Monthly budget | Transactions | Goals | Payment accounts | Compare | Reports | Settings | Team | Backups | MONTHS | 2026 | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | Data auto-saved | Last snapshot 19 min ago | Set up your PC copy | TE | test | test1@hhh.fr | Dashboard | Portfolio | · lifetime | EN | FR | TE | test | Portfolio · Lifetime | MY BUSINESS | 2026 at a glance | Where your money comes from
 shot: 02_after_login
 logged-in: true
 visit: 03_dashboard /dashboard -> https://budgetly.online/dashboard (200)
@@ -34,7 +34,9 @@ visit: 17_pricing /pricing -> https://budgetly.online/pricing (200)
 shot: 17_pricing
 modal-open-url: https://budgetly.online/dashboard
 shot: 14_modal_open
-modal-inputs: 0
+modal-inputs: 4
+fill: description ok
+fill: amount ok
 shot: 15_modal_filled
 visit: 20_dashboard_clean /dashboard -> https://budgetly.online/dashboard (200)
 shot: 20_dashboard_clean
