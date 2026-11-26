@@ -7,6 +7,7 @@ const PASS = process.env.B_PASS || 'test1@hhh.fr';
 const BASE = 'https://budgetly.online';
 const OUT = 'footage';
 fs.mkdirSync(OUT, { recursive: true });
+fs.rmSync(`${OUT}/video`, { recursive: true, force: true });
 fs.mkdirSync(`${OUT}/video`, { recursive: true });
 
 const log = [];
@@ -204,6 +205,9 @@ try {
     note('after-save-body', clean(await page.locator('body').innerText().catch(() => ''), 900));
     await shot('18_after_save', false);
     await visit('19_transactions_after', '/transactions');
+    await visit('22_dashboard_after_reload', '/dashboard');
+    note('after-reload-body', clean(await page.locator('body').innerText().catch(() => ''), 900));
+    await visit('23_accounts_after', '/accounts');
   } else {
     note('save-error', 'no save button found');
   }
